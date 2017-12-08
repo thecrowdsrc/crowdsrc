@@ -168,6 +168,20 @@ BOOST_AUTO_TEST_CASE( account_create_apply )
       tx.sign( init_account_priv_key, db->get_chain_id() );
       STEEM_REQUIRE_THROW( db->push_transaction( tx, 0 ), fc::exception );
       validate_database();
+
+      BOOST_TEST_MESSAGE( "--- Test account creation with temp account does not set recovery account" );
+      fund( STEEM_TEMP_ACCOUNT, ASSET( "310.000 TESTS" ) );
+      vest( STEEM_TEMP_ACCOUNT, ASSET( "10.000 TESTS" ) );
+      op.creator = STEEM_TEMP_ACCOUNT;
+      op.fee = ASSET( "300.000 TESTS" );
+      op.new_account_name = "bob";
+      tx.clear();
+      tx.operations.push_back( op );
+      db->push_transaction( tx, 0 );
+
+      BOOST_REQUIRE( db->get_account( "bob" ).recovery_account == account_name_type() );
+      validate_database();
+
    }
    FC_LOG_AND_RETHROW()
 }
@@ -6088,6 +6102,19 @@ BOOST_AUTO_TEST_CASE( account_create_with_delegation_apply )
       BOOST_REQUIRE( itr->delegator == "alice" );
       BOOST_REQUIRE( itr->vesting_shares == del_amt );
       BOOST_REQUIRE( itr->expiration == exp_time );
+      validate_database();
+
+      BOOST_TEST_MESSAGE( "--- Test account creation with temp account does not set recovery account" );
+      fund( STEEM_TEMP_ACCOUNT, ASSET( "310.000 TESTS" ) );
+      vest( STEEM_TEMP_ACCOUNT, ASSET( "10.000 TESTS" ) );
+      op.creator = STEEM_TEMP_ACCOUNT;
+      op.fee = ASSET( "300.000 TESTS" );
+      op.new_account_name = "dave";
+      tx.clear();
+      tx.operations.push_back( op );
+      db->push_transaction( tx, 0 );
+
+      BOOST_REQUIRE( db->get_account( "dave" ).recovery_account == account_name_type() );
       validate_database();
    }
    FC_LOG_AND_RETHROW()
