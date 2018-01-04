@@ -40,28 +40,28 @@
 #define STEEMIT_OWNER_AUTH_HISTORY_TRACKING_START_BLOCK_NUM 1
 #else // IS LIVE STEEM NETWORK
 
-#define STEEMIT_INIT_PUBLIC_KEY_STR             "STM8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX"
+#define STEEMIT_INIT_PUBLIC_KEY_STR             "CRD8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX"
 #define STEEMIT_CHAIN_ID                        (steemit::protocol::chain_id_type())
-#define VESTS_SYMBOL  (uint64_t(6) | (uint64_t('V') << 8) | (uint64_t('E') << 16) | (uint64_t('S') << 24) | (uint64_t('T') << 32) | (uint64_t('S') << 40)) ///< VESTS with 6 digits of precision
-#define STEEM_SYMBOL  (uint64_t(3) | (uint64_t('S') << 8) | (uint64_t('T') << 16) | (uint64_t('E') << 24) | (uint64_t('E') << 32) | (uint64_t('M') << 40)) ///< STEEM with 3 digits of precision
-#define SBD_SYMBOL    (uint64_t(3) | (uint64_t('S') << 8) | (uint64_t('B') << 16) | (uint64_t('D') << 24) ) ///< STEEM Backed Dollars with 3 digits of precision
+#define VESTS_SYMBOL  (uint64_t(6) | (uint64_t('D') << 8) | (uint64_t('E') << 16) | (uint64_t('S') << 24) | (uint64_t('T') << 32) | (uint64_t('S') << 40)) ///< DESTS with 6 digits of precision
+#define STEEM_SYMBOL  (uint64_t(3) | (uint64_t('C') << 8) | (uint64_t('R') << 16) | (uint64_t('O') << 24) | (uint64_t('W') << 32) | (uint64_t('D') << 40)) ///< CROWD with 3 digits of precision
+#define SBD_SYMBOL    (uint64_t(3) | (uint64_t('C') << 8) | (uint64_t('R') << 16) | (uint64_t('D') << 24) ) ///< Crowd Dollars with 3 digits of precision
 #define STMD_SYMBOL   (uint64_t(3) | (uint64_t('S') << 8) | (uint64_t('T') << 16) | (uint64_t('M') << 24) | (uint64_t('D') << 32) ) ///< STEEM Dollars with 3 digits of precision
-#define STEEMIT_SYMBOL                          "STEEM"
-#define STEEMIT_ADDRESS_PREFIX                  "STM"
+#define STEEMIT_SYMBOL                          "CROWD"
+#define STEEMIT_ADDRESS_PREFIX                  "CRD"
 
 #define STEEMIT_GENESIS_TIME                    (fc::time_point_sec(1458835200))
 #define STEEMIT_MINING_TIME                     (fc::time_point_sec(1458838800))
 #define STEEMIT_CASHOUT_WINDOW_SECONDS_PRE_HF12 (60*60*24)    /// 1 day
 #define STEEMIT_CASHOUT_WINDOW_SECONDS_PRE_HF17 (60*60*12)    /// 12 hours
-#define STEEMIT_CASHOUT_WINDOW_SECONDS          (60*60*24*7)  /// 7 days
+#define STEEMIT_CASHOUT_WINDOW_SECONDS          (60*60*24*1/24)  /// 7 days
 #define STEEMIT_SECOND_CASHOUT_WINDOW           (60*60*24*30) /// 30 days
 #define STEEMIT_MAX_CASHOUT_WINDOW_SECONDS      (60*60*24*14) /// 2 weeks
 #define STEEMIT_VOTE_CHANGE_LOCKOUT_PERIOD      (60*60*2)     /// 2 hours
 #define STEEMIT_UPVOTE_LOCKOUT_HF7              (fc::minutes(1))
-#define STEEMIT_UPVOTE_LOCKOUT_HF17             (fc::hours(12))
+#define STEEMIT_UPVOTE_LOCKOUT_HF17             (fc::minutes(30))
 
-#define STEEMIT_ORIGINAL_MIN_ACCOUNT_CREATION_FEE  100000
-#define STEEMIT_MIN_ACCOUNT_CREATION_FEE           1
+#define STEEMIT_ORIGINAL_MIN_ACCOUNT_CREATION_FEE  0
+#define STEEMIT_MIN_ACCOUNT_CREATION_FEE           0
 
 #define STEEMIT_OWNER_AUTH_RECOVERY_PERIOD                  fc::days(30)
 #define STEEMIT_ACCOUNT_RECOVERY_REQUEST_EXPIRATION_PERIOD  fc::days(1)
@@ -80,7 +80,7 @@
 #define STEEMIT_NUM_INIT_MINERS                 1
 #define STEEMIT_INIT_TIME                       (fc::time_point_sec());
 
-#define STEEMIT_MAX_WITNESSES                   21
+#define STEEMIT_MAX_WITNESSES                   51
 
 #define STEEMIT_MAX_VOTED_WITNESSES_HF0         19
 #define STEEMIT_MAX_MINER_WITNESSES_HF0         1
@@ -96,7 +96,7 @@
 #define STEEMIT_MAX_PROXY_RECURSION_DEPTH       4
 #define STEEMIT_VESTING_WITHDRAW_INTERVALS_PRE_HF_16 104
 #define STEEMIT_VESTING_WITHDRAW_INTERVALS      13
-#define STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS (60*60*24*7) /// 1 week per interval
+#define STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS (60*60*24*1) /// 1 week per interval
 #define STEEMIT_MAX_WITHDRAW_ROUTES             10
 #define STEEMIT_SAVINGS_WITHDRAW_TIME        	(fc::days(3))
 #define STEEMIT_SAVINGS_WITHDRAW_REQUEST_LIMIT  100
@@ -112,7 +112,7 @@
 #define STEEMIT_POST_MAX_BANDWIDTH              (4*STEEMIT_100_PERCENT) // 2 posts per 1 days, average 1 every 12 hours
 #define STEEMIT_POST_WEIGHT_CONSTANT            (uint64_t(STEEMIT_POST_MAX_BANDWIDTH) * STEEMIT_POST_MAX_BANDWIDTH)
 
-#define STEEMIT_MAX_ACCOUNT_WITNESS_VOTES       30
+#define STEEMIT_MAX_ACCOUNT_WITNESS_VOTES       60
 
 #define STEEMIT_100_PERCENT                     10000
 #define STEEMIT_1_PERCENT                       (STEEMIT_100_PERCENT/100)
